@@ -13,127 +13,140 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS with your brand colors
+# Clean, light CSS with your brand colors
 st.markdown("""
 <style>
     .main {
-        background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-        color: white;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        color: #334155;
     }
     
     .stApp {
-        background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     }
     
     h1 {
         color: #47d495 !important;
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
         font-weight: 700 !important;
         text-align: center !important;
         margin-bottom: 0.5rem !important;
-        text-shadow: 0 0 20px rgba(71, 212, 149, 0.3);
+        text-shadow: 0 2px 4px rgba(71, 212, 149, 0.1);
     }
     
     .subtitle {
         text-align: center;
-        color: #98c1d9;
-        font-size: 1.2rem;
+        color: #6f58c9;
+        font-size: 1.1rem;
         margin-bottom: 2rem;
-        opacity: 0.9;
+        font-weight: 500;
     }
     
     .metric-card {
-        background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+        background: linear-gradient(145deg, #ffffff, #f8fafc);
         padding: 1.5rem;
-        border-radius: 15px;
-        border: 1px solid #47d495;
-        box-shadow: 0 8px 32px rgba(71, 212, 149, 0.1);
+        border-radius: 12px;
+        border: 2px solid rgba(71, 212, 149, 0.2);
+        box-shadow: 0 4px 20px rgba(71, 212, 149, 0.1);
         margin: 1rem 0;
-        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
     }
     
-    .daypart-row {
-        background: linear-gradient(90deg, rgba(71, 212, 149, 0.1) 0%, rgba(152, 193, 217, 0.05) 100%);
-        border-left: 4px solid #47d495;
-        margin: 0.5rem 0;
-        border-radius: 8px;
+    .metric-card:hover {
+        border-color: #47d495;
+        box-shadow: 0 8px 30px rgba(71, 212, 149, 0.15);
+        transform: translateY(-2px);
     }
     
     .stButton > button {
         background: linear-gradient(45deg, #47d495, #6f58c9) !important;
         color: white !important;
         border: none !important;
-        border-radius: 25px !important;
-        padding: 0.75rem 2rem !important;
+        border-radius: 10px !important;
+        padding: 0.7rem 1.5rem !important;
         font-weight: 600 !important;
         transition: all 0.3s ease !important;
-        box-shadow: 0 4px 15px rgba(71, 212, 149, 0.3) !important;
+        box-shadow: 0 3px 10px rgba(71, 212, 149, 0.3) !important;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(71, 212, 149, 0.4) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(71, 212, 149, 0.4) !important;
     }
     
     .stSelectbox > div > div {
-        background-color: #2a2a2a !important;
-        border: 1px solid #47d495 !important;
-        border-radius: 10px !important;
-        color: white !important;
+        background-color: white !important;
+        border: 2px solid rgba(71, 212, 149, 0.3) !important;
+        border-radius: 8px !important;
+        color: #334155 !important;
     }
     
     .stTextArea > div > div > textarea {
-        background-color: #1a1a1a !important;
-        border: 2px solid #47d495 !important;
-        border-radius: 10px !important;
-        color: #98c1d9 !important;
+        background-color: #f8fafc !important;
+        border: 2px solid rgba(71, 212, 149, 0.3) !important;
+        border-radius: 8px !important;
+        color: #334155 !important;
         font-family: 'Courier New', monospace !important;
     }
     
+    .stTextArea > div > div > textarea:focus {
+        border-color: #47d495 !important;
+        box-shadow: 0 0 0 3px rgba(71, 212, 149, 0.1) !important;
+    }
+    
     .stExpander {
-        background-color: rgba(26, 26, 26, 0.8) !important;
-        border: 1px solid #6f58c9 !important;
-        border-radius: 10px !important;
+        background-color: white !important;
+        border: 1px solid rgba(111, 88, 201, 0.2) !important;
+        border-radius: 8px !important;
     }
     
     .success-banner {
-        background: linear-gradient(90deg, rgba(71, 212, 149, 0.2) 0%, rgba(111, 88, 201, 0.1) 100%);
-        padding: 1rem;
+        background: linear-gradient(90deg, rgba(71, 212, 149, 0.1) 0%, rgba(152, 193, 217, 0.05) 100%);
+        padding: 1.2rem;
         border-radius: 10px;
         border-left: 4px solid #47d495;
         margin: 1rem 0;
+        color: #334155;
     }
     
     .insight-box {
-        background: linear-gradient(135deg, rgba(238, 108, 77, 0.1) 0%, rgba(152, 193, 217, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(238, 108, 77, 0.05) 0%, rgba(152, 193, 217, 0.05) 100%);
         padding: 1.5rem;
         border-radius: 12px;
-        border: 1px solid #ee6c4d;
+        border: 1px solid rgba(238, 108, 77, 0.3);
         margin: 1rem 0;
+        color: #334155;
     }
     
     .performance-badge {
         display: inline-block;
-        padding: 0.3rem 0.8rem;
+        padding: 0.4rem 0.9rem;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 600;
         margin: 0.2rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     
     .badge-excellent {
-        background: linear-gradient(45deg, #47d495, #47d495);
-        color: #111111;
+        background: #47d495;
+        color: white;
     }
     
     .badge-good {
-        background: linear-gradient(45deg, #98c1d9, #6f58c9);
+        background: #98c1d9;
         color: white;
     }
     
     .badge-poor {
-        background: linear-gradient(45deg, #ee6c4d, #ee6c4d);
+        background: #ee6c4d;
         color: white;
+    }
+    
+    .stDataFrame {
+        border: 1px solid rgba(71, 212, 149, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -284,9 +297,9 @@ def create_performance_charts(day_part_df, hourly_df):
     fig1.update_layout(
         height=600,
         showlegend=False,
-        paper_bgcolor='rgba(17,17,17,0.8)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', family='Arial'),
+        paper_bgcolor='white',
+        plot_bgcolor='rgba(248,250,252,0.5)',
+        font=dict(color='#334155', family='Arial'),
         title_text="📊 Day Parting Performance Dashboard",
         title_x=0.5,
         title_font_size=20,
@@ -294,8 +307,8 @@ def create_performance_charts(day_part_df, hourly_df):
     )
     
     # Update all subplot backgrounds
-    fig1.update_xaxes(showgrid=True, gridcolor='rgba(71, 212, 149, 0.1)')
-    fig1.update_yaxes(showgrid=True, gridcolor='rgba(71, 212, 149, 0.1)')
+    fig1.update_xaxes(showgrid=True, gridcolor='rgba(71, 212, 149, 0.2)')
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(71, 212, 149, 0.2)')
     
     # 2. Hourly Trend Analysis
     fig2 = go.Figure()
@@ -321,12 +334,12 @@ def create_performance_charts(day_part_df, hourly_df):
         title="⏰ Hourly Performance Trends",
         title_font_color=colors['primary'],
         title_font_size=18,
-        xaxis=dict(title="Hour of Day", color='white', showgrid=True, gridcolor='rgba(71, 212, 149, 0.1)'),
+        xaxis=dict(title="Hour of Day", color='#334155', showgrid=True, gridcolor='rgba(71, 212, 149, 0.2)'),
         yaxis=dict(title="Cost (£)", side='left', color=colors['primary']),
         yaxis2=dict(title="CTR (%)", side='right', overlaying='y', color=colors['accent']),
-        paper_bgcolor='rgba(17,17,17,0.8)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', family='Arial'),
+        paper_bgcolor='white',
+        plot_bgcolor='rgba(248,250,252,0.5)',
+        font=dict(color='#334155', family='Arial'),
         height=400,
         hovermode='x unified'
     )
