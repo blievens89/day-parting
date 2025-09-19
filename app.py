@@ -276,12 +276,12 @@ def create_performance_charts(day_part_df, hourly_df):
         row=1, col=2
     )
     
-    # Clicks pie
+    # Clicks distribution (bar instead of pie)
     fig1.add_trace(
-        go.Pie(labels=day_part_df['Day Parting'], values=day_part_df['Clicks'],
-               name='Clicks', marker_colors=[colors['primary'], colors['secondary'], 
-                                           colors['accent'], colors['purple'], 
-                                           colors['primary'], colors['secondary']]),
+        go.Bar(x=day_part_df['Day Parting'], y=day_part_df['Clicks'],
+               name='Clicks', marker_color=colors['secondary'],
+               text=[f'{x:,}' for x in day_part_df['Clicks']],
+               textposition='outside'),
         row=2, col=1
     )
     
